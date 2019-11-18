@@ -1,0 +1,36 @@
+# Project: Sudoku
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o Sudoku.o Board.o $(RES)
+LINKOBJ  = main.o Sudoku.o Board.o $(RES)
+LIBS =  -L"lib"  
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = sudoku.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before sudoku.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "sudoku.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Sudoku.o: Sudoku.cpp
+	$(CPP) -c Sudoku.cpp -o Sudoku.o $(CXXFLAGS)
+
+Board.o: Board.cpp
+	$(CPP) -c Board.cpp -o Board.o $(CXXFLAGS)
